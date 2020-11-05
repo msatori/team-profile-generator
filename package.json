@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "__tests__/            // jest tests\r         Employee.test.js\r         Engineer.test.js\r         Intern.test.js\r         Manager.test.js\r         dist/                           // rendered output (HTML) and CSS style sheet\r         lib/                // classes\r         src/                // template helper code\r         Index.js            // runs the application",
+  "main": "Index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msatori/team-profile-generator.git"
+  },
+  "author": "Maya Santiago",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/msatori/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/msatori/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  }
+}
