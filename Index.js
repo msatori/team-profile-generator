@@ -33,9 +33,9 @@ const newManager = employeeInfo => {
                 name: 'managerEmail',
                 message: 'Enter employees email',
                 validate: function (email) {
-  
+
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-        
+
                     if (valid) {
                         return true;
                     } else {
@@ -72,7 +72,7 @@ const newManager = employeeInfo => {
                 }
             }
         ])
-   
+
 };
 //create a function for new engineers
 const newEngineer = () => {
@@ -97,9 +97,9 @@ const newEngineer = () => {
                 name: 'engineerEmail',
                 message: 'Enter employees email',
                 validate: function (email) {
-  
+
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-        
+
                     if (valid) {
                         return true;
                     } else {
@@ -136,13 +136,13 @@ const newEngineer = () => {
                 }
             }
         ])
-    
-    
+
+
 }
 //create a function for new interns
-const newIntern = () =>{
+const newIntern = () => {
     //include a conditional for role information
-   return inquirer
+    return inquirer
         .prompt([
             {
                 type: 'input',
@@ -162,9 +162,9 @@ const newIntern = () =>{
                 name: 'internEmail',
                 message: 'Enter employees email',
                 validate: function (email) {
-  
+
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-        
+
                     if (valid) {
                         return true;
                     } else {
@@ -201,36 +201,36 @@ const newIntern = () =>{
                 }
             }
         ])
-  
+
 }
 //create a function for an option if user wants to add another employee
 const checkMoreMembers = (addData) => {
-    return inquirer.prompt ([
+    inquirer.prompt([
         {
             type: 'confirm',
             name: 'confirmAdd',
             message: "Would you like to add another team member?"
         }
     ])
-        if(addData.confirmAdd == 'yes' || 'y') {
-            return inquirer.prompt([
-                {
-                    type: 'list',
-                    name: "roleChoice",
-                    message: 'What role will this member have?',
-                    choices: ['Manager', 'Engineer', 'Intern']
-                    
+    if (addData.confirmAdd == 'yes' || 'y') {
+        return inquirer.prompt([
+            {
+                type: 'list',
+                name: "roleChoice",
+                message: 'What role will this member have?',
+                choices: ['Manager', 'Engineer', 'Intern']
+
+            }
+        ])
+            .then(response => {
+                if (response.roleChoice === 'Engineer') {
+                    return newEngineer();
+                } else if (addData === 'Intern') {
+                    return newIntern();
                 }
-            ])
-            
-        }
-        if(addData.roleChoice === 'Engineer') {
-            return newEngineer();
-        } else if (addData === 'Intern') {
-            return newIntern();
-        } 
-        
-};
+            })
+    }
+}
 newManager()
     .then(newEngineer)
     .then(newIntern)
