@@ -1,4 +1,41 @@
-# team-profile-generator
+  # Team-Profile-Generator [![License](https://img.shields.io.badge/license-MIT-blue.svg)]
+
+  ## Description 
+
+  This project is intended for creatinga database to save details of team members for projects. Type the name, email, and any role-specific questions into our prompts, and you will instantly get a sleek  ready-to-deploy HTML with you members information.
+
+
+  ## Table of Contents (Optional)
+
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [Credits](#credits)
+    * [License](#license)
+    * [Directory Structure](#director-structure)
+    * [Requirements](#requirements)
+    * [User Story](#user-story)
+
+
+  ## Installation
+    npm i jest, npm i inquirer
+
+  ## Usage 
+    Use this any time that you need to store information for a project team.
+
+  ## CREDITS
+    
+
+  ## License
+  MIT [![License](https://img.shields.io.badge/license-MIT-blue.svg)
+
+  ## Contributing
+    undefined
+  ## Tests
+    npm test
+
+  # Contact Me
+    Feel free to contact me if you have any questions about this project. I can be reached by email at msatori.code@gmail.com
+
 
 ## Directory Structure: 
         __tests__/            // jest tests
