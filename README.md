@@ -8,32 +8,33 @@
 
   ## Table of Contents (Optional)
 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [Credits](#credits)
-    * [License](#license)
-    * [Directory Structure](#director-structure)
-    * [Requirements](#requirements)
-    * [User Story](#user-story)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+* [Directory Structure](#director-structure)
+* [Requirements](#requirements)
+* [User Story](#user-story)
 
 
   ## Installation
     npm i jest, npm i inquirer
 
   ## Usage 
-    Use this any time that you need to store information for a project team.
+Use this any time that you need to store information for a project team.
 
   ## CREDITS
     
 
   ## License
-  [[License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+MIT
 
   ## Tests
     npm test
 
   # Contact Me
-    Feel free to contact me if you have any questions about this project. I can be reached by email at msatori.code@gmail.com
+Feel free to contact me if you have any questions about this project. I can be reached by email at msatori.code@gmail.com
 
 
 ## Directory Structure: 
@@ -51,12 +52,12 @@
 -Must use Jest and Inquirer
 -Run using 'node index.js"
 -Needs the following classes 
-    -name
-    -id
-    -email
-    -getId
-    -getEmail
-    -getRole
+-name
+-id
+-email
+-getId
+-getEmail
+-getRole
 
 ## User Story:
         AS A manager
