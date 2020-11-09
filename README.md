@@ -1,4 +1,5 @@
-  # Team-Profile-Generator [![License](https://img.shields.io.badge/license-MIT-blue.svg)]
+  # Team-Profile-Generator [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
   ## Description 
 
@@ -26,10 +27,8 @@
     
 
   ## License
-  MIT [![License](https://img.shields.io.badge/license-MIT-blue.svg)
+  [[License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  ## Contributing
-    undefined
   ## Tests
     npm test
 
