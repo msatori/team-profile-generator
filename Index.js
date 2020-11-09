@@ -32,11 +32,14 @@ const newManager = employeeInfo => {
                 type: 'input',
                 name: 'managerEmail',
                 message: 'Enter employees email',
-                validate: managerEmailInput => {
-                    if (managerEmailInput) {
+                validate: function (email) {
+  
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+        
+                    if (valid) {
                         return true;
                     } else {
-                        console.log('Please enter an email address!');
+                        console.log(".  Please enter a valid email")
                         return false;
                     }
                 }
@@ -93,11 +96,14 @@ const newEngineer = () => {
                 type: 'input',
                 name: 'engineerEmail',
                 message: 'Enter employees email',
-                validate: engineerEmailInput => {
-                    if (engineerEmailInput) {
+                validate: function (email) {
+  
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+        
+                    if (valid) {
                         return true;
                     } else {
-                        console.log('Please enter an email address!');
+                        console.log(".  Please enter a valid email")
                         return false;
                     }
                 }
@@ -130,7 +136,8 @@ const newEngineer = () => {
                 }
             }
         ])
-
+    
+    
 }
 //create a function for new interns
 const newIntern = () =>{
@@ -154,11 +161,14 @@ const newIntern = () =>{
                 type: 'input',
                 name: 'internEmail',
                 message: 'Enter employees email',
-                validate: internEmailInput => {
-                    if (internEmailInput) {
+                validate: function (email) {
+  
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+        
+                    if (valid) {
                         return true;
                     } else {
-                        console.log('Please enter an email address!');
+                        console.log(".  Please enter a valid email")
                         return false;
                     }
                 }
@@ -191,10 +201,37 @@ const newIntern = () =>{
                 }
             }
         ])
-
+  
 }
 //create a function for an option if user wants to add another employee
-
+const checkMoreMembers = (addData) => {
+    return inquirer.prompt ([
+        {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: "Would you like to add another team member?"
+        }
+    ])
+        if(addData.confirmAdd == 'yes' || 'y') {
+            return inquirer.prompt([
+                {
+                    type: 'list',
+                    name: "roleChoice",
+                    message: 'What role will this member have?',
+                    choices: ['Manager', 'Engineer', 'Intern']
+                    
+                }
+            ])
+            
+        }
+        if(addData.roleChoice === 'Engineer') {
+            return newEngineer();
+        } else if (addData === 'Intern') {
+            return newIntern();
+        } 
+        
+};
 newManager()
     .then(newEngineer)
     .then(newIntern)
+    .then(checkMoreMembers)
