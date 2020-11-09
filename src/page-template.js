@@ -1,45 +1,59 @@
 
 
-const generateMembers = members => {
-    const generateManager = manager => {
+
+    const generateManager = managerInfo => {
         return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
         <div class="flex-row justify-space-between">
             <div class="col-12 mb-2 bg-dark text-light p-3">
-              <h3 class="portfolio-item-title text-light">${manager.getName()}</h3>
+              <h3 class="portfolio-item-title text-light">${managerInfo.getName()}</h3>
               <h4 class="portfolio-item-title text-light">${manager.getRole()}</h3>  
               <ul>
-                <li> ID: ${manager.getId()}</li>
-                <li> Email: <a href="mailto:${manager.getEmail()}>${manager.getEmail()}</li>
+                <li> ID: ${managerInfo.getId()}</li>
+                <li> Email: <a href="mailto:${manager.getEmail()}>${managerInfo.getEmail()}</li>
                 <li> Office Number: ${manager.getOfficeNum()}</li>
               </ul>
             </div>
           `;
 
     }
-    const generateEngineer = engineer => {
+    const generateEngineer = engineerInfo => {
         return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
         <div class="flex-row justify-space-between">
             <div class="col-12 mb-2 bg-dark text-light p-3">
-              <h3 class="portfolio-item-title text-light">${engineer.getName()}</h3>
+              <h3 class="portfolio-item-title text-light">${engineerInfo.getName()}</h3>
               <h4 class="portfolio-item-title text-light">${manager.getRole()}</h3>  
               <ul>
-                <li> ID: ${engineer.getId()}</li>
-                <li> Email: <a href="mailto:${engineer.getEmail()}>${engineer.getEmail()}</li>
-                <li> GitHub: <a href= "${engineer.getGithub()}" target="_blank</li>
+                <li> ID: ${engineerInfo.getId()}</li>
+                <li> Email: <a href="mailto:${engineerInfo.getEmail()}>${engineerInfo.getEmail()}</li>
+                <li> GitHub: <a href= "${engineerInfo.getGithub()}" target="_blank"></li>
               </ul>
             </div>
           `;
 
     }
-};
-module.exports = templateData => {
-    // destructure page data by section
-    const { projects, about, ...header } = templateData;
+    const generateIntern = internInfo => {
+      return `
+    <section class="my-3" id="portfolio">
+      <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
+      <div class="flex-row justify-space-between">
+          <div class="col-12 mb-2 bg-dark text-light p-3">
+            <h3 class="portfolio-item-title text-light">${internInfo.getName()}</h3>
+            <h4 class="portfolio-item-title text-light">${internInfo.getRole()}</h3>  
+            <ul>
+              <li> ID: ${intern.getId()}</li>
+              <li> Email: <a href="mailto:${internInfo.getEmail()}>${internInfo.getEmail()}</li>
+              <li> School: ${internInfo.getSchool()}</li>
+            </ul>
+          </div>
+        `;
 
+  }
+  
+ const generateHtml = () => {
     return `
     < !DOCTYPE html >
         <html lang="en">
@@ -55,18 +69,11 @@ module.exports = templateData => {
     </head>
 
                                     <body>
-                                        <header>
-                                            <div class="container flex-row justify-space-between align-center py-3">
-                                                <h1 class="page-title text-secondary bg-dark py-2 px-3">${header.name}</h1>
-                                                <nav class="flex-row">
-                                                    <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" href="https://github.com/${header.github
-        }">GitHub</a>
-                                                </nav>
-                                            </div>
-                                        </header>
                                         <main class="container my-5">
-                                            ${generateProjects(projects)}
-            ${generateAbout(about)}
+                                           ${generateManager()}
+                                           ${generateEngineer()}
+                                           ${generateIntern()}
+
                                         </main>
                                         <footer class="container text-center py-3">
                                             <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${header.name}</h3>
@@ -75,3 +82,5 @@ module.exports = templateData => {
     </html>
     `;
 };
+
+module.exports = generateHtml();

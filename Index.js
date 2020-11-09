@@ -3,6 +3,8 @@ const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 const Employee = require('./lib/Employee');
+const generatePage = require('./src/page-template');
+const fs = require('fs');
 
 //create an empty array for employees
 const employeeArr = [];
@@ -10,7 +12,7 @@ const employeeIdArr = [];
 
 //create a function for building a team, then create seperate questions for each team member 
 //think about html output - keep every team member grouped properly
-const newManager = employeeInfo => {
+const newManager = () => {
     console.log("Welcome to the Team Profile Generator! Let's build your team")
     //use inquirer to give prompts for employee information
     return inquirer
@@ -72,7 +74,11 @@ const newManager = employeeInfo => {
                 }
             }
         ])
-
+       .then(answers => {
+           const managerInfo = new Manager(answers.managerNameInput, answers.managerIdInput, answers.managerEmail, answers.managerOffInput);
+           employeeArr.push(managerInfo)
+           newEngineer();
+       })
 };
 //create a function for new engineers
 const newEngineer = () => {
@@ -136,8 +142,12 @@ const newEngineer = () => {
                 }
             }
         ])
-
-
+      
+        .then(answers => {
+            const engineerInfo = new Engineer(answers.engineerNameInput, answers.engineerIdInput, answers.engineerEmail, answers.github);
+            employeeArr.push(engineerInfo)
+            newIntern();
+        })
 }
 //create a function for new interns
 const newIntern = () => {
@@ -201,7 +211,11 @@ const newIntern = () => {
                 }
             }
         ])
-
+        .then(answers => {
+            const internInfo = new Intern(answers.internNameInput, answers.internIdInput, answers.internEmail, answers.schoolInput);
+            employeeArr.push(internInfo)
+            checkMoreMembers();
+        })
 }
 //create a function for an option if user wants to add another employee
 const checkMoreMembers = (addData) => {
@@ -222,8 +236,8 @@ const checkMoreMembers = (addData) => {
 
             }
         ])
-            .then(response => {
-                if (response.roleChoice === 'Engineer') {
+            .then(answers => {
+                if (answers.roleChoice === 'Engineer') {
                     return newEngineer();
                 } else if (addData === 'Intern') {
                     return newIntern();
@@ -231,7 +245,17 @@ const checkMoreMembers = (addData) => {
             })
     }
 }
+const initHTML = () => {
+const pageHTML = generatePage();
+
+fs.writeFile('./index.html', pageHTML, err => {
+    if (err) throw new Error(err);
+
+    console.log('Your team has been generated! Check out index.html to see your website.')
+})
+};
 newManager()
-    .then(newEngineer)
-    .then(newIntern)
-    .then(checkMoreMembers)
+    .then(initHTML);
+    
+    
+    
