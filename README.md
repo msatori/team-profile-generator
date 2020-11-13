@@ -19,7 +19,8 @@
 
   ## Installation
     npm i jest, npm i inquirer
-
+    
+[![Application Demo](./demo.png)](https://drive.google.com/file/d/1mewTe4QSXHb0sdZBKS1P0hx0YYtDfGnt/preview" "App Demo")
   ## Usage 
 Use this any time that you need to store information for a project team.
 
