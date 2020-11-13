@@ -74,11 +74,12 @@ const newManager = () => {
                 }
             }
         ])
-       .then(answers => {
-           const managerInfo = new Manager(answers.managerNameInput, answers.managerIdInput, answers.managerEmail, answers.managerOffInput);
-           employeeArr.push(managerInfo)
-           newEngineer();
-       })
+        .then(answers => {
+            const managerInfo = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNum);
+            employeeArr.push(managerInfo);
+            console.log(employeeArr);
+            newEngineer();
+        })
 };
 //create a function for new engineers
 const newEngineer = () => {
@@ -142,11 +143,11 @@ const newEngineer = () => {
                 }
             }
         ])
-      
+
         .then(answers => {
-            const engineerInfo = new Engineer(answers.engineerNameInput, answers.engineerIdInput, answers.engineerEmail, answers.github);
+            const engineerInfo = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.github);
             employeeArr.push(engineerInfo)
-            newIntern();
+            checkMoreMembers();
         })
 }
 //create a function for new interns
@@ -212,7 +213,7 @@ const newIntern = () => {
             }
         ])
         .then(answers => {
-            const internInfo = new Intern(answers.internNameInput, answers.internIdInput, answers.internEmail, answers.schoolInput);
+            const internInfo = new Intern(answers.internName, answers.internId, answers.internEmail, answers.school);
             employeeArr.push(internInfo)
             checkMoreMembers();
         })
@@ -225,37 +226,41 @@ const checkMoreMembers = (addData) => {
             name: 'confirmAdd',
             message: "Would you like to add another team member?"
         }
-    ])
-    if (addData.confirmAdd == 'yes' || 'y') {
-        return inquirer.prompt([
-            {
-                type: 'list',
-                name: "roleChoice",
-                message: 'What role will this member have?',
-                choices: ['Manager', 'Engineer', 'Intern']
+    ]).then(answers => {
+        console.log(answers.confirmAdd);
+        if (answers.confirmAdd) {
+          inquirer.prompt([
+                {
+                    type: 'list',
+                    name: "roleChoice",
+                    message: 'What role will this member have?',
+                    choices: ['Engineer', 'Intern']
 
-            }
-        ])
-            .then(answers => {
-                if (answers.roleChoice === 'Engineer') {
-                    return newEngineer();
-                } else if (addData === 'Intern') {
-                    return newIntern();
                 }
-            })
-    }
-}
-const initHTML = () => {
-const pageHTML = generatePage();
-
-fs.writeFile('./index.html', pageHTML, err => {
-    if (err) throw new Error(err);
-
-    console.log('Your team has been generated! Check out index.html to see your website.')
-})
+            ])
+                .then(answers => {
+                    if (answers.roleChoice === 'Engineer') {
+                       newEngineer();
+                    } else if (answers.roleChoice === 'Intern') {
+                       newIntern();
+                    }
+                })
+        } else {
+            initHTML();
+        }
+    })
 };
-newManager()
-    .then(initHTML);
-    
-    
-    
+
+const initHTML = () => {
+        const pageHTML = generatePage(employeeArr);
+
+        fs.writeFile('./index.html', pageHTML, err => {
+            if (err) throw new Error(err);
+
+            console.log('Your team has been generated! Check out index.html to see your website.')
+        })
+    };
+    newManager()
+
+
+
