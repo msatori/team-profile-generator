@@ -77,7 +77,6 @@ const newManager = () => {
         .then(answers => {
             const managerInfo = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNum);
             employeeArr.push(managerInfo);
-            console.log(employeeArr);
             newEngineer();
         })
 };

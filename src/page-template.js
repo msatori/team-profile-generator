@@ -11,7 +11,7 @@
               <h4 class="text-light">${managerInfo.getRole()}</h3>  
               <ul class=list-group list-group-flush">
                 <li class="list-group-item"> ID: ${managerInfo.getId()}</li>
-                <li class="list-group-item"> Email: <a href="mailto:${managerInfo.getEmail()}>"${managerInfo.getEmail()}"</li>
+                <li class="list-group-item"> Email:${managerInfo.getEmail()}<a href="mailto:${managerInfo.getEmail()}</li>
                 <li class="list-group-item"> Office Number: ${managerInfo.getOfficeNum()}</li>
               </ul>
             </div>
@@ -29,8 +29,8 @@
           <h4 class="text-light">${engineerInfo.getRole()}</h3>  
           <ul class=list-group list-group-flush">
             <li class="list-group-item"> ID: ${engineerInfo.getId()}</li>
-            <li class="list-group-item"> Email: <a href="mailto:${engineerInfo.getEmail()}">"${engineerInfo.getEmail()}"</li>
-            <li class="list-group-item"> Github Username: "${engineerInfo.getGithub()}"</li>
+            <li class="list-group-item"> Email: ${engineerInfo.getEmail()} <a href="mailto:${engineerInfo.getEmail()}"></li>
+            <li class="list-group-item"> Github Username: ${engineerInfo.getGithub()}</li>
           </ul>
         </div>
         </div>
@@ -47,8 +47,8 @@
         <h4 class="text-light"><i class="fas fa-coffee"></i>${internInfo.getRole()}</h3>  
         <ul class=list-group list-group-flush">
           <li class="list-group-item"> ID: ${internInfo.getId()}</li>
-          <li class="list-group-item"> Email: <a href="mailto:${internInfo.getEmail()}>"${internInfo.getEmail()}"</li>
-          <li class="list-group-item"> School: "${internInfo.getSchool()}"</li>
+          <li class="list-group-item"> Email: ${internInfo.getEmail()} <a href="mailto:${internInfo.getEmail()}></li>
+          <li class="list-group-item"> School: ${internInfo.getSchool()}</li>
         </ul>
       </div>
       </div>
